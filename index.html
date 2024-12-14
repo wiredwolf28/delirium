@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Delirium Sweeper</title>
+<script src="main.js"></script>
+<style>
+body
+{
+	background-color: grey;
+}
+td
+{
+	background-color: grey;
+	width: 32px;
+	height: 32px;
+	text-align: center;
+}
+td.map
+{
+	background-color: darkgrey;
+}
+.gameOver .boss.delirium
+{
+	background-color: red;
+}
+.gameOver .boss:not(.delirium), .boss.revealed
+{
+	background-color: green;
+}
+.gameOver .deliriumSquare
+{
+	background-color: yellow;
+}
+.italic
+{
+	font-style: italic;
+}
+</style>
+</head>
+
+<body>
+<div>Width: <input type="number" id="widthInput" value="13" min="9" max="127"/>Height: <input type="number" id="heightInput" value="13" min="9" max="127"/> Seed: <span id="seed">0</span> <button id="reset">New Game</button><button id="resetSeeded">New Seeded Game</button><button id="noOptions">Any of these rooms can be delirium</button></div>
+<div>Click on boss rooms that could <span class="italic">not</span> be Delirium.</div>
+<div>Rules:
+<ul>
+<li>The map is centered on the starting room (the ladder)</li>
+<li>Delirium's room occupies a 2x2 area</li>
+<li>Delirium's room can't touch more than 1 adjacent room (as most boss rooms can't)</li>
+<li>Delirium can't be outside of the <span id="width">13</span>x<span id="height">13</span> area of the map (AKA up to <span id="wRadius">6</span> rooms horizontally and <span id="hRadius">6</span> rooms vertically away from the starting room)</li>
+</ul>
+</div>
+<div id="main"></div>
+</body>
+</html>
